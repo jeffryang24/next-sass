@@ -1,22 +1,23 @@
-# Next.js + Sass
+# Next.js + Sass (Modded :trollface:)
 
-Import `.sass` or `.scss` files in your Next.js project
+- Import `.sass` or `.scss` files (for pure css) in your Next.js project, such us: `import 'path/to/style.scss';`.
+- Import `.module.sass` or `.module.scss` files (for css module) in your Next.js project, such us: `import Style from 'path/to/style.module.scss';`. **(Note: You must enable `cssModules` to use this feature)**
 
 ## Installation
 
 ```
-npm install --save @zeit/next-sass node-sass
+npm install jeffryang24/next-sass
 ```
 
 or
 
 ```
-yarn add @zeit/next-sass node-sass
+yarn add jeffryang24/next-sass
 ```
 
 ## Usage
 
-The stylesheet is compiled to `.next/static/css`. Next.js will automatically add the css file to the HTML. 
+The stylesheet is compiled to `.next/static/css`. Next.js will automatically add the css file to the HTML.
 In production a chunk hash is added so that styles are updated when a new version of the stylesheet is deployed.
 
 ### Without CSS modules
@@ -26,6 +27,10 @@ Create a `next.config.js` in your project
 ```js
 // next.config.js
 const withSass = require('@zeit/next-sass')
+// Without config
+module.exports = withSass()
+
+// Or with config
 module.exports = withSass({
   /* config options here */
 })
@@ -43,12 +48,14 @@ $font-size: 50px;
 Create a page file `pages/index.js`
 
 ```js
-import "../styles.scss"
+import '../styles.scss'
 
 export default () => <div className="example">Hello World!</div>
 ```
 
 ### With CSS modules
+
+> Note: Enable css modules also enables basic sass/scss support.
 
 ```js
 // next.config.js
@@ -58,7 +65,7 @@ module.exports = withSass({
 })
 ```
 
-Create a Sass file  `styles.scss`
+Create a Sass file `styles.module.scss`
 
 ```scss
 $font-size: 50px;
@@ -70,7 +77,7 @@ $font-size: 50px;
 Create a page file `pages/index.js`
 
 ```js
-import css from "../styles.scss"
+import css from '../styles.module.scss'
 
 export default () => <div className={css.example}>Hello World!</div>
 ```
@@ -88,12 +95,12 @@ module.exports = withSass({
   cssModules: true,
   cssLoaderOptions: {
     importLoaders: 1,
-    localIdentName: "[local]___[hash:base64:5]",
+    localIdentName: '[local]___[hash:base64:5]'
   }
 })
 ```
 
-Create a SCSS file `style.scss`
+Create a SCSS file `style.module.scss`
 
 ```css
 .example {
@@ -104,14 +111,10 @@ Create a SCSS file `style.scss`
 Create a page file `pages/index.js` that imports your stylesheet and uses the hashed class name from the stylesheet
 
 ```js
-import css from "../style.scss"
+import css from '../style.module.scss'
 
 const Component = props => {
-  return (
-    <div className={css.example}>
-      ...
-    </div>
-  )
+  return <div className={css.example}>...</div>
 }
 
 export default Component
@@ -130,7 +133,7 @@ You can pass options from [node-sass](https://github.com/sass/node-sass#options)
 const withSass = require('@zeit/next-sass')
 module.exports = withSass({
   sassLoaderOptions: {
-    includePaths: ["absolute/path/a", "absolute/path/b"]
+    includePaths: ['absolute/path/a', 'absolute/path/b']
   }
 })
 ```
@@ -191,7 +194,6 @@ module.exports = withSass({
   }
 })
 ```
-
 
 ### Configuring Next.js
 
