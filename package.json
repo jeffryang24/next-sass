@@ -1,11 +1,11 @@
 {
   "name": "@zeit/next-sass",
-  "version": "0.2.1-canary.4",
+  "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "repository": "zeit/next-plugins",
   "dependencies": {
-    "@zeit/next-css": "0.2.1-canary.4",
+    "@zeit/next-css": "^1.0.0",
     "sass-loader": "^8.0.0"
   },
   "devDependencies": {
