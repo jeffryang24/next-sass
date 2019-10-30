@@ -5,7 +5,7 @@
   "license": "MIT",
   "repository": "jeffryang24/next-sass",
   "dependencies": {
-    "@zeit/next-css": "^2.0.0-custom",
+    "@zeit/next-css": "git://github.com/jeffryang24/next-css.git#@zeit/next-css@2.0.0-custom",
     "sass-loader": "^8.0.0"
   },
   "devDependencies": {
